@@ -6,7 +6,24 @@
   <body>
     <button onclick="sendEmail()">Send Email</button>
     <script>
-      function sendEmail() {
+      function sendEmail() {import smtplib
+
+def send_email(to, subject, body):
+    FROM = "youremail@example.com"
+    PASSWORD = "yourpassword"
+    server = smtplib.SMTP("smtp.example.com")
+    server.starttls()
+    server.login(FROM, PASSWORD)
+    message = f"Subject: {subject}\n\n{body}"
+    server.sendmail(FROM, to, message)
+    server.quit()
+
+# Function that gets called when the user clicks on the link
+def send_email_on_click():
+    to = "david.bullard@oksenate.gov"
+    subject = "Opposition to OK SB129 (The Millstone Act of 2023)"
+    body = "Dear Senator Bullard, I am writing to express my strong opposition to OK SB129, the Millstone Act of 2023, which aims to prevent individuals under the age of 26 from accessing gender-affirming medical care. This bill not only threatens the rights and autonomy of transgender individuals, but it also puts their lives at risk. As a scientific fact, transgender individuals who are denied access to gender-affirming care are at a much higher risk for suicide. According to a study published in JAMA Psychiatry, transgender individuals who were able to access gender-affirming care had a nearly 70% reduction in suicide attempts. This highlights the importance of providing gender-affirming care to those who need it and the severe consequences that can occur when access is restricted. Furthermore, gender-affirming care is not only recommended but is also supported by numerous leading medical organizations such as the American Medical Association, the American Psychological Association, and the American Academy of Pediatrics. These organizations have stated that gender-affirming care, including puberty blockers and hormones, is a safe and effective way to support the health and well-being of transgender individuals.  By passing the Millstone Act of 2023, you will be putting the lives of Oklahoma's transgender youth at risk, and denying them the right to make decisions about their own bodies. I urge you to reconsider this bill and instead work towards creating policies that support and protect the rights of transgender individuals in Oklahoma."
+    send_email(to, subject, body)
         // code to send email
       }
     </script>
